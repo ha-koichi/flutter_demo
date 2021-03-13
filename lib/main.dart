@@ -26,7 +26,54 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("To NextPage"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NextScreen(),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class NextScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Next Screen"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Back To Previous Page"),
+          onPressed: () {
+            Navigator.pop(
+              context,
+            );
+          },
+        ),
+      )
     );
   }
 }
