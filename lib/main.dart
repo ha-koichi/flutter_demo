@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/second.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeScreen(),
+      routes: {
+        '/second': (context) => NextScreen(),
+      },
     );
   }
 }
@@ -43,12 +47,13 @@ class HomeScreen extends StatelessWidget {
         child: ElevatedButton(
           child: Text("To NextPage"),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NextScreen(),
-              ),
-            );
+            Navigator.pushNamed(context, '/second');
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => NextScreen(),
+            //   ),
+            // );
           },
         ),
       ),
@@ -56,27 +61,27 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class NextScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Next Screen"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Back To Previous Page"),
-          onPressed: () {
-            Navigator.pop(
-              context,
-            );
-          },
-        ),
-      )
-    );
-  }
-}
+// class NextScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Next Screen"),
+//         centerTitle: true,
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           child: Text("Back To Previous Page"),
+//           onPressed: () {
+//             Navigator.pop(
+//               context,
+//             );
+//           },
+//         ),
+//       )
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
