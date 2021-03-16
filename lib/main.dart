@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/second.dart';
+import 'package:flutter_demo/tab.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
       routes: {
         '/second': (context) => NextScreen(),
+        '/tab': (context) => TabScreen(),
       },
     );
   }
@@ -43,20 +45,30 @@ class HomeScreen extends StatelessWidget {
         title: Text('Home Screen'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("To NextPage"),
-          onPressed: () {
-            Navigator.pushNamed(context, '/second');
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => NextScreen(),
-            //   ),
-            // );
-          },
-        ),
-      ),
+        body: Column(
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                height: 70,
+                child: ElevatedButton(
+                  child: Text("To NextPage"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/second');
+                  }
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 70,
+                child: ElevatedButton(
+                    child: Text("To TabPage"),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/tab');
+                    }
+                ),
+              ),
+            ]
+        )
     );
   }
 }
